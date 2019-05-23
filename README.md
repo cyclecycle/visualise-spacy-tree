@@ -40,7 +40,7 @@ doc = nlp(text)
 import visualise_spacy_tree
 plot = visualise_spacy_tree.plot(doc)
 
-# Write it to a file (it's .png format)
+# Write it to a file (it's png format)
 with open('parse_tree.png', 'wb') as f:
     f.write(plot)
 
@@ -48,9 +48,9 @@ with open('parse_tree.png', 'wb') as f:
 from IPython.display import Image, display
 display(Image(plot))
 
-# Override node attributes using the underscore extension
+# Override node attributes like so
 from spacy.tokens import Token
-Token.set_extension('plot', default={})
+Token.set_extension('plot', default={})  # Create a token underscore extension
 for token in doc:
     node_text = '{0} [{1}])'.format(token.orth_, token.i)
     token._.plot['text'] = node_text
@@ -58,6 +58,7 @@ for token in doc:
         token._.plot['color'] = 'green'
 
 '''
+You can set any valid GraphViz dot attribute in 'plot'.
 See GraphViz docs for reference of possible node attributes:
 https://graphviz.gitlab.io/_pages/doc/info/attrs.html
 '''
@@ -69,3 +70,7 @@ https://graphviz.gitlab.io/_pages/doc/info/attrs.html
 Uses:
 
 - [pydot](https://github.com/pydot/pydot)
+
+## Contributions
+
+Are welcome :)
