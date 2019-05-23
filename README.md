@@ -1,13 +1,12 @@
 # visualise-spacy-tree
 
-An alternative to [SpaCy's](https://spacy.io) built-in [visualizer](https://spacy.io/usage/visualizers#dep), built on [GraphViz](https://graphviz.gitlab.io/). 
+An alternative to [SpaCy's](https://spacy.io) [visualizer](https://spacy.io/usage/visualizers#dep), built on [GraphViz](https://graphviz.gitlab.io/). 
 
 ![Custom plot image](https://github.com/cyclecycle/visualise-spacy-tree/blob/master/example_plots/custom_plot.png)
 
 ## Prerequisites
 
 - GraphViz. Download and install as per the instructions [here](https://graphviz.gitlab.io/download/)
-- [pydot](https://github.com/pydot/pydot)
 
 ## Installation
 
@@ -70,3 +69,9 @@ https://graphviz.gitlab.io/_pages/doc/info/attrs.html
 '''
 
 ```
+
+## Acknowledgements
+
+Uses:
+
+- [pydot](https://github.com/pydot/pydot)
