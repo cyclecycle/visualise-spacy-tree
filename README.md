@@ -24,9 +24,9 @@ text = 'Forging involves the shaping of metal using localized compressive forces
 nlp = en_core_web_sm.load()
 doc = nlp(text)
 
-# Create png plot
+# Create the plot
 import visualise_spacy_tree
-plot = visualise_spacy_tree.plot(doc)
+plot = visualise_spacy_tree.plot(doc)  # It's .png format
 
 # Write it to a file
 with open('parse_tree.png', 'wb') as f:
@@ -36,7 +36,7 @@ with open('parse_tree.png', 'wb') as f:
 from IPython.display import Image, display
 display(Image(plot))
 
-# Override node text using the underscore extension
+# Override node attributes using the underscore extension
 from spacy.tokens import Token
 Token.set_extension('plot', default={})
 for token in doc:
@@ -48,7 +48,6 @@ for token in doc:
         )
     token._.plot['text'] = node_text
 
-# Customise node styles
 doc[0]._.plot['color'] = 'green'  # Make first token green
 doc[1]._.plot['style'] = 'box'  # Make second token box-shape
 
