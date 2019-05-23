@@ -1,53 +1,46 @@
-# from IPython.display import Image, display
 import pydot
 
 
-PLOT_COLOUR_MAP = [
-    {
-        'attr': 'chunk_type',
-        'is_underscore': True,
-        'val': 'entity',
-        'colour': 'lightsalmon',
-    },
-    {
-        'attr': 'chunk_type',
-        'is_underscore': True,
-        'val': 'predicate',
-        'colour': 'palegreen',
-    }
-]
+DEFAULT_NODE_ATTRS = {
+    'color': 'cyan',
+    'shape': 'box',
+    'style': 'rounded',
+    'fontname': 'palatino',
+    'fontsize': 10,
+    'penwidth': 2
+}
 
 
-def plot(doc, colour_map=PLOT_COLOUR_MAP, default_colour='cyan', display_plot=False):
+def node_text(token):
+    try:
+        text = token._.plot['text']
+    except:
+        text = '{0} [{1}]\n({2} / {3})'.format(
+            token.orth_,
+            token.i,
+            token.pos_,
+            token.tag_
+        )
+    return text
 
-    def choose_color(token):
-        for cond in colour_map:
-            try:
-                if not cond['is_underscore']:
-                    attr = getattr(token, cond['attr'])
-                else:
-                    attr = getattr(token._, cond['attr'])
-                if attr == cond['val']:
-                    return cond['colour']
-            except AttributeError:
-                # print('No attribute named {}'.format(cond['attr']))
-                pass
-        return default_colour
+
+def plot(doc):
 
     graph = pydot.Dot(graph_type='graph')
 
-    '''Add nodes to graph (tokens)'''
+    # Add nodes to graph
     idx2node = {}
     for token in doc:
-        color = choose_color(token)
-        node_text = '{0} [{1}]\n({2} / {3})'.format(token.orth_, token.i, token.pos_, token.tag_)
-        node = pydot.Node(
-            node_text,
-            shape='box',
-            color=color,
-            penwidth=1,
-            # style='rounded',
-        )
+        try:
+            plot_attrs = token._.plot
+        except AttributeError:
+            plot_attrs = {}
+        for attr, val in DEFAULT_NODE_ATTRS.items():
+            if attr not in plot_attrs:
+                plot_attrs[attr] = val
+        text = node_text(token)
+        plot_attrs['name'] = text
+        node = pydot.Node(**plot_attrs)
         idx2node[token.i] = node
         graph.add_node(node)
 
@@ -64,8 +57,5 @@ def plot(doc, colour_map=PLOT_COLOUR_MAP, default_colour='cyan', display_plot=Fa
             graph.add_edge(edge)
 
     png = graph.create_png()
-
-    if display_plot:
-        display(Image(png))
 
     return png
