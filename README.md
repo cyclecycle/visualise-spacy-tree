@@ -4,7 +4,7 @@ An alternative to [SpaCy's](https://spacy.io) built-in [visualizer](https://spac
 
 ![Custom plot image](https://github.com/cyclecycle/visualise-spacy-tree/blob/master/example_plots/custom_plot.png)
 
-## Prequisites
+## Prerequisites
 
 - GraphViz. Download and install as per the instructions [here](https://graphviz.gitlab.io/download/)
 - [pydot](https://github.com/pydot/pydot)
@@ -15,6 +15,14 @@ With pip:
 
 ```bash
 pip install visualise-spacy-tree
+```
+
+Or from source:
+
+```bash
+git clone https://github.com/cyclecycle/visualise-spacy-tree.git visualise_spacy_tree
+cd visualise_spacy_tree
+python setup.py install
 ```
 
 ## Usage
