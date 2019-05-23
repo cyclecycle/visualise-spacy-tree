@@ -6,7 +6,7 @@ An alternative to [SpaCy's](https://spacy.io) [visualizer](https://spacy.io/usag
 
 ## Prerequisites
 
-- [GraphViz](https://graphviz.gitlab.io/). Download and install as per the instructions [here](https://graphviz.gitlab.io/download/).
+- [GraphViz](https://graphviz.gitlab.io/). Download and install as per the [instructions](https://graphviz.gitlab.io/download/).
 
 ## Installation
 
