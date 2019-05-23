@@ -28,7 +28,7 @@ python setup.py install
 
 ```python
 
-# First, parse a string to create SpaCy Doc object
+# Parse a string to create SpaCy Doc object
 import en_core_web_sm
 
 text = 'Forging involves the shaping of metal using localized compressive forces.'
@@ -38,13 +38,13 @@ doc = nlp(text)
 
 # Create the plot
 import visualise_spacy_tree
-plot = visualise_spacy_tree.plot(doc)  # It's .png format
+plot = visualise_spacy_tree.plot(doc)
 
-# Write it to a file
+# Write it to a file (it's .png format)
 with open('parse_tree.png', 'wb') as f:
     f.write(plot)
 
-# Or if you're using Jupyter notebook, you can render it inline
+# If you're using Jupyter notebook, you can render it inline
 from IPython.display import Image, display
 display(Image(plot))
 
@@ -52,16 +52,10 @@ display(Image(plot))
 from spacy.tokens import Token
 Token.set_extension('plot', default={})
 for token in doc:
-    node_text = '{0} [{1}]\n({2} / {3})'.format(
-            token.orth_,
-            token.i,
-            token.pos_,
-            token.tag_
-        )
+    node_text = '{0} [{1}])'.format(token.orth_, token.i)
     token._.plot['text'] = node_text
-
-doc[0]._.plot['color'] = 'green'  # Make first token green
-doc[1]._.plot['shape'] = 'box'  # Make second token box-shape
+    if token.dep_ == 'ROOT':
+        token._.plot['color'] = 'green'
 
 '''
 See GraphViz docs for reference of possible node attributes:
