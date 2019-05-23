@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="visualise-spacy-tree",
-    version="0.0.1",
+    version="0.0.2",
     author="Nicholas Morley",
     author_email="nick.morley111@gmail.com",
     description="Create dependency tree plots from SpaCy Doc objects",
