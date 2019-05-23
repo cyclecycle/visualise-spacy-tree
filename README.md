@@ -16,27 +16,27 @@ pip install visualise-spacy-tree
 
 ```python
 
+# First, parse a string to create SpaCy Doc object
 import en_core_web_sm
-import visualise_spacy_tree
 
 text = 'Forging involves the shaping of metal using localized compressive forces.'
 
-# Parse text, create Doc object
 nlp = en_core_web_sm.load()
 doc = nlp(text)
 
 # Create png plot
-plot = visualise_spacy_tree.plot(doc, default_color='cyan')
+import visualise_spacy_tree
+plot = visualise_spacy_tree.plot(doc)
 
 # Write it to a file
 with open('parse_tree.png', 'wb') as f:
     f.write(plot)
 
-# Or render it in jupyter notebook
+# Or if you're using Jupyter notebook, you can render it inline
 from IPython.display import Image, display
 display(Image(plot))
 
-# Override node display text using spacy underscore extension
+# Override node text using the underscore extension
 from spacy.tokens import Token
 Token.set_extension('plot', default={})
 for token in doc:
