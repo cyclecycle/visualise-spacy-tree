@@ -6,7 +6,7 @@ An alternative to [SpaCy's](https://spacy.io) [visualizer](https://spacy.io/usag
 
 ## Prerequisites
 
-- [GraphViz](https://graphviz.gitlab.io/). Download and install as per the [instructions](https://graphviz.gitlab.io/download/).
+- You need [GraphViz](https://graphviz.gitlab.io/download/) installed.
 
 ## Installation
 
@@ -63,6 +63,12 @@ See GraphViz docs for reference of possible node attributes:
 https://graphviz.gitlab.io/_pages/doc/info/attrs.html
 '''
 
+```
+
+## Running the tests
+
+```bash
+pytest
 ```
 
 ## Acknowledgements
