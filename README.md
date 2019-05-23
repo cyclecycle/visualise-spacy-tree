@@ -2,7 +2,7 @@
 
 An alternative to SpaCy's built-in visualisation method.
 
-[[https://github.com/cylcecycle/visualise_spacy_tree/blob/master/example_plots/custom_plot.png]]
+![Custom plot image](https://github.com/cylcecycle/visualise_spacy_tree/blob/master/example_plots/custom_plot.png)
 
 ## Installation
 
@@ -36,7 +36,7 @@ with open('parse_tree.png', 'wb') as f:
 from IPython.display import Image, display
 display(Image(plot))
 
-# Override node display text with the 'plot' token underscore extension
+# Override node display text using spacy underscore extension
 from spacy.tokens import Token
 Token.set_extension('plot', default={})
 for token in doc:
@@ -50,12 +50,14 @@ for token in doc:
 
 # Customise node styles
 doc[0]._.plot['color'] = 'green'  # Make first token green
-doc[1]._.plot['style'] = 'rounded'  # Make second token rounded
+doc[1]._.plot['style'] = 'box'  # Make second token box-shape
 
-# See GraphViz docs for reference of possible node attributes: https://graphviz.gitlab.io/_pages/doc/info/attrs.html
+'''
+See GraphViz docs for reference of possible node attributes: https://graphviz.gitlab.io/_pages/doc/info/attrs.html
+'''
 
 ```
 
 ## Built with
 
-[pydot][https://github.com/pydot/pydot]
+[pydot](https://github.com/pydot/pydot)
