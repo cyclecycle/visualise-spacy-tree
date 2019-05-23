@@ -52,7 +52,8 @@ doc[0]._.plot['color'] = 'green'  # Make first token green
 doc[1]._.plot['shape'] = 'box'  # Make second token box-shape
 
 '''
-See GraphViz docs for reference of possible node attributes: https://graphviz.gitlab.io/_pages/doc/info/attrs.html
+See GraphViz docs for reference of possible node attributes:
+https://graphviz.gitlab.io/_pages/doc/info/attrs.html
 '''
 
 ```
