@@ -2,7 +2,7 @@
 
 An alternative to SpaCy's built-in visualisation method.
 
-![Custom plot image](https://github.com/cylcecycle/visualise-spacy-tree/blob/master/example_plots/custom_plot.png)
+![Custom plot image](https://github.com/cyclecycle/visualise-spacy-tree/blob/master/example_plots/custom_plot.png)
 
 ## Installation
 
