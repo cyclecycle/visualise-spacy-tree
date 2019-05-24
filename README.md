@@ -2,7 +2,7 @@
 
 An alternative to [SpaCy's](https://spacy.io) [visualizer](https://spacy.io/usage/visualizers#dep), built on [GraphViz](https://graphviz.gitlab.io/). 
 
-![Custom plot image](https://github.com/cyclecycle/visualise-spacy-tree/blob/master/example_plots/custom_plot.png)
+![Example plot image](https://github.com/cyclecycle/visualise-spacy-tree/blob/master/visualise_spacy_tree/example_plots/custom_plot.png)
 
 ## Prerequisites
 
