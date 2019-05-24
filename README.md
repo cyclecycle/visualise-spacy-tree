@@ -67,9 +67,13 @@ https://graphviz.gitlab.io/_pages/doc/info/attrs.html
 
 ## Running the tests
 
+Run 
+
 ```bash
 pytest
 ```
+
+from the root directory.
 
 ## Acknowledgements
 

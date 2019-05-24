@@ -1,3 +1,4 @@
+import os
 import en_core_web_sm
 from spacy.tokens import Token
 import visualise_spacy_tree
@@ -7,10 +8,12 @@ text = 'Forging involves the shaping of metal using localized compressive forces
 nlp = en_core_web_sm.load()
 doc = nlp(text)
 
+example_plot_dir = 'visualise_spacy_tree/example_plots/'
+
 
 def test_default_plot():
     plot = visualise_spacy_tree.plot(doc)
-    with open('example_plots/default_plot.png', 'wb') as f:
+    with open(os.path.join(example_plot_dir, 'default_plot.png'), 'wb') as f:
         f.write(plot)
 
 
@@ -29,5 +32,5 @@ def test_custom_plot():
         if token.dep_ in ['nsubj', 'dobj']:
             token._.plot['color'] = 'deeppink1'
     plot = visualise_spacy_tree.plot(doc)
-    with open('example_plots/custom_plot.png', 'wb') as f:
+    with open(os.path.join(example_plot_dir, 'custom_plot.png'), 'wb') as f:
         f.write(plot)
