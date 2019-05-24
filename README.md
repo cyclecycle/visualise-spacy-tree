@@ -48,7 +48,7 @@ with open('parse_tree.png', 'wb') as f:
 from IPython.display import Image, display
 display(Image(plot))
 
-# Override node attributes like so
+# Override node attributes to customise the plot
 from spacy.tokens import Token
 Token.set_extension('plot', default={})  # Create a token underscore extension
 for token in doc:
