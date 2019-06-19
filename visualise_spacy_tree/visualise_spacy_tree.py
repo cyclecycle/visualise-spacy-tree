@@ -24,13 +24,17 @@ def node_text(token):
     return text
 
 
-def plot(doc):
+def get_edge_label(from_token, to_token):
+    label = ' ' + from_token.dep_
+    return label
 
+
+def to_pydot(tokens, get_edge_label=get_edge_label):
     graph = pydot.Dot(graph_type='graph')
 
     # Add nodes to graph
     idx2node = {}
-    for token in doc:
+    for token in tokens:
         try:
             plot_attrs = token._.plot
         except AttributeError:
@@ -45,17 +49,26 @@ def plot(doc):
         graph.add_node(node)
 
     '''Add edges'''
-    for token in doc:
-        if token.dep_ != 'ROOT':
-            from_node = idx2node[token.i]
-            to_node = idx2node[token.head.i]
-            label = ' ' + token.dep_
-            edge = pydot.Edge(
-                to_node, from_node, label=label,
-                fontsize=12
-            )
-            graph.add_edge(edge)
+    for token in tokens:
+        if token.dep_ == 'ROOT':
+            continue
+        if token.head not in tokens:
+            continue
+        from_token = token
+        to_token = token.head
+        from_node = idx2node[from_token.i]
+        to_node = idx2node[to_token.i]
+        label = get_edge_label(from_token, to_token)
+        edge = pydot.Edge(
+            to_node, from_node, label=label,
+            fontsize=12
+        )
+        graph.add_edge(edge)
 
+    return graph
+
+
+def create_png(tokens):
+    graph = to_pydot(tokens)
     png = graph.create_png()
-
     return png

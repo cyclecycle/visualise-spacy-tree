@@ -12,7 +12,7 @@ example_plot_dir = 'visualise_spacy_tree/example_plots/'
 
 
 def test_default_plot():
-    plot = visualise_spacy_tree.plot(doc)
+    plot = visualise_spacy_tree.create_png(doc)
     with open(os.path.join(example_plot_dir, 'default_plot.png'), 'wb') as f:
         f.write(plot)
 
@@ -31,6 +31,15 @@ def test_custom_plot():
             token._.plot['color'] = 'dodgerblue'
         if token.dep_ in ['nsubj', 'dobj']:
             token._.plot['color'] = 'deeppink1'
-    plot = visualise_spacy_tree.plot(doc)
+    plot = visualise_spacy_tree.create_png(doc)
     with open(os.path.join(example_plot_dir, 'custom_plot.png'), 'wb') as f:
         f.write(plot)
+
+
+def test_partial_plot():
+    tokens = [doc[0], doc[1], doc[3]]
+    plot = visualise_spacy_tree.create_png(tokens)
+    with open(os.path.join(example_plot_dir, 'default_partial_plot.png'), 'wb') as f:
+        f.write(plot)
+
+

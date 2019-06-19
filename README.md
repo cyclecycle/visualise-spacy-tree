@@ -38,15 +38,15 @@ doc = nlp(text)
 
 # Create the plot
 import visualise_spacy_tree
-plot = visualise_spacy_tree.plot(doc)
+png = visualise_spacy_tree.create_png(doc)
 
-# Write it to a file (it's png format)
+# Write it to a file
 with open('parse_tree.png', 'wb') as f:
-    f.write(plot)
+    f.write(png)
 
 # If you're using Jupyter notebook, you can render it inline
 from IPython.display import Image, display
-display(Image(plot))
+display(Image(png))
 
 # Override node attributes to customise the plot
 from spacy.tokens import Token
