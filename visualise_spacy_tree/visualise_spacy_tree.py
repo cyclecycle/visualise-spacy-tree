@@ -11,17 +11,17 @@ DEFAULT_NODE_ATTRS = {
 }
 
 
-def node_text(token):
+def node_label(token):
     try:
-        text = token._.plot['text']
+        label = token._.plot['label']
     except:
-        text = '{0} [{1}]\n({2} / {3})'.format(
+        label = '{0} [{1}]\n({2} / {3})'.format(
             token.orth_,
             token.i,
             token.pos_,
             token.tag_
         )
-    return text
+    return label
 
 
 def get_edge_label(from_token, to_token):
@@ -42,8 +42,9 @@ def to_pydot(tokens, get_edge_label=get_edge_label):
         for attr, val in DEFAULT_NODE_ATTRS.items():
             if attr not in plot_attrs:
                 plot_attrs[attr] = val
-        text = node_text(token)
-        plot_attrs['name'] = text
+        label = node_label(token)
+        plot_attrs['name'] = token.i
+        plot_attrs['label'] = label
         node = pydot.Node(**plot_attrs)
         idx2node[token.i] = node
         graph.add_node(node)

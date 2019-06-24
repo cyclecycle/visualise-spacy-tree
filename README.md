@@ -52,8 +52,8 @@ display(Image(png))
 from spacy.tokens import Token
 Token.set_extension('plot', default={})  # Create a token underscore extension
 for token in doc:
-    node_text = '{0} [{1}])'.format(token.orth_, token.i)
-    token._.plot['text'] = node_text
+    node_label = '{0} [{1}])'.format(token.orth_, token.i)
+    token._.plot['label'] = node_label
     if token.dep_ == 'ROOT':
         token._.plot['color'] = 'green'
 

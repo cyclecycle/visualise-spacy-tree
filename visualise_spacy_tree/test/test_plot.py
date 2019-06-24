@@ -20,13 +20,13 @@ def test_default_plot():
 def test_custom_plot():
     Token.set_extension('plot', default={'color': 'aquamarine'})
     for token in doc:
-        node_text = '{0} [{1}]\n({2} / {3})'.format(
+        node_label = '{0} [{1}]\n({2} / {3})'.format(
                 token.orth_,
                 token.i,
                 token.pos_,
                 token.tag_
             )
-        token._.plot['text'] = node_text
+        token._.plot['label'] = node_label
         if token.dep_ in ['ROOT', 'acl']:
             token._.plot['color'] = 'dodgerblue'
         if token.dep_ in ['nsubj', 'dobj']:
