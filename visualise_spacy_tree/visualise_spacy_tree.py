@@ -69,7 +69,7 @@ def to_pydot(tokens, get_edge_label=get_edge_label):
     return graph
 
 
-def create_png(tokens):
+def create_png(tokens, prog=None):
     graph = to_pydot(tokens)
-    png = graph.create_png()
+    png = graph.create_png(prog=prog)
     return png
